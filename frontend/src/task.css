@@ -1,0 +1,8 @@
+.modal-content {
+  border-radius: 0.8rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.modal-header {
+  border-top-left-radius: 0.8rem;
+  border-top-right-radius: 0.8rem;
+}

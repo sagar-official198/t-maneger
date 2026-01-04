@@ -1,10 +1,8 @@
-# ===== Dependencies =====
 node_modules/
 **/node_modules/
-
-# ===== Build files =====
 build/
 **/build/
+.env
 
 # ===== Environment files =====
 .env
