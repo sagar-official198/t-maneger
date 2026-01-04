@@ -18,7 +18,7 @@ const TaskCard = () => {
   const [edittask, setEditTask] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/auth/getAllTask`, {
+    fetch("https://tassk-2.onrender.com/api/auth/getAllTask", {
     })
       .then((res) => res.json())
       .then((result) => {
@@ -33,7 +33,7 @@ const TaskCard = () => {
       return;
     }
 
-    fetch(`${API_URL}/api/auth/createTask`, {
+    fetch("https://tassk-2.onrender.com/api/auth/createTask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ const TaskCard = () => {
   };
 
   const handleEdit = () => {
-    fetch(`${API_URL}/api/auth/editTask/${edittask}`, {
+    fetch(`https://tassk-2.onrender.com/api/auth/editTask/${edittask}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +96,7 @@ const TaskCard = () => {
   };
 
   const deleteTask = (id) => {
-    fetch(`${API_URL}/api/auth/deleteTask/${id}`, {
+    fetch(`https://tassk-2.onrender.com/api/auth/deleteTask/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
