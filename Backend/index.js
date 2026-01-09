@@ -13,23 +13,24 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 const URI = process.env.MONGODB_URI;
 
-// ✅ CORS CONFIG
 app.use(cors({
   origin: "https://tassk-1.onrender.com",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
 
-app.use(express.json());
+/* ===== Middleware ===== */
+app.use(cors());                 // ✅ ENABLE CORS
+app.use(express.json());         // ✅ Parse JSON
 
+/* ===== MongoDB Connection ===== */
 mongoose
   .connect(URI)
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.error("MongoDB connection error:", err));
 
+/* ===== Routes ===== */
 app.use("/api/auth", taskRoute);
-
-// Serve frontend build
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 // SPA fallback
@@ -39,6 +40,7 @@ app.use((req, res) => {
   );
 });
 
+/* ===== Server ===== */
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

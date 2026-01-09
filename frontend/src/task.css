@@ -6,3 +6,15 @@
   border-top-left-radius: 0.8rem;
   border-top-right-radius: 0.8rem;
 }
+.fab-btn {
+  position: fixed;
+  top: 20px;        /* 👈 move to top */
+  right: 20px;      /* 👈 right side */
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

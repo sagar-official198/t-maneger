@@ -16,9 +16,10 @@ const TaskCard = () => {
   const [status, setStatus] = useState("Pending");
 
   const [edittask, setEditTask] = useState(null);
+  const isCreateDisabled = !edittask && (!taskName.trim() || !taskDate);
 
   useEffect(() => {
-    fetch("https://tassk-2.onrender.com/api/auth/getAllTask", {
+    fetch("https://manage.onrender.com/api/auth/getAllTask", {
     })
       .then((res) => res.json())
       .then((result) => {
@@ -33,7 +34,7 @@ const TaskCard = () => {
       return;
     }
 
-    fetch("https://tassk-2.onrender.com/api/auth/createTask", {
+    fetch("https://manage.onrender.com/api/auth/createTask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +72,7 @@ const TaskCard = () => {
   };
 
   const handleEdit = () => {
-    fetch(`https://tassk-2.onrender.com/api/auth/editTask/${edittask}`, {
+    fetch(`https://manage.onrender.com/api/auth/editTask/${edittask}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -96,7 +97,7 @@ const TaskCard = () => {
   };
 
   const deleteTask = (id) => {
-    fetch(`https://tassk-2.onrender.com/api/auth/deleteTask/${id}`, {
+    fetch(`https://manage.onrender.com/api/auth/deleteTask/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
@@ -121,10 +122,9 @@ const TaskCard = () => {
   return (
     <>
       <div className="container py-4">
-        <img src={logo} alt="Logo" style={{ height: 80 , paddingBottom:30}} />
-
+        <h1>Task Manager</h1>
         <button
-          className="btn btn-success rounded-circle fab-btn"
+          className="btn btn-dark rounded-circle fab-btn"
           onClick={() => setShowModal(true)}
         >
           <i className="bi bi-plus-lg fs-2"></i>
@@ -248,11 +248,12 @@ const TaskCard = () => {
                   Cancel
                 </button>
                 <button
-                  className="btn btn-success"
-                  onClick={edittask ? handleEdit : handleAddTask}
-                >
-                  {edittask ? "Update" : "Add"}
-                </button>
+  className="btn btn-dark"
+  onClick={edittask ? handleEdit : handleAddTask}
+  disabled={isCreateDisabled}
+>
+  {edittask ? "Update" : "Submit"}
+</button>
               </div>
             </div>
           </div>
