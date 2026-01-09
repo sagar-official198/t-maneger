@@ -19,7 +19,7 @@ const TaskCard = () => {
   const isCreateDisabled = !edittask && (!taskName.trim() || !taskDate);
 
   useEffect(() => {
-    fetch("https://manage.onrender.com/api/auth/getAllTask", {
+    fetch("https://manage-z09f.onrender.com/api/auth/getAllTask", {
     })
       .then((res) => res.json())
       .then((result) => {
@@ -34,7 +34,7 @@ const TaskCard = () => {
       return;
     }
 
-    fetch("https://manage.onrender.com/api/auth/createTask", {
+    fetch("https://manage-z09f.onrender.com/api/auth/createTask", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -72,7 +72,7 @@ const TaskCard = () => {
   };
 
   const handleEdit = () => {
-    fetch(`https://manage.onrender.com/api/auth/editTask/${edittask}`, {
+    fetch(`https://manage-z09f.onrender.com/api/auth/editTask/${edittask}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -97,7 +97,7 @@ const TaskCard = () => {
   };
 
   const deleteTask = (id) => {
-    fetch(`https://manage.onrender.com/api/auth/deleteTask/${id}`, {
+    fetch(`https://manage-z09f.onrender.com/api/auth/deleteTask/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
